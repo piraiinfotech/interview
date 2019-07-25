@@ -1,0 +1,125 @@
+LOGIN PAGE(reg.html)
+
+<html>
+</body>
+<form action="data.php" method="POST">
+<p>USERID:<input type="text" name="userid"></p>
+<p>Password: <input type="password" name="password"></p>
+<input type="submit" value="Login">
+</form>
+</body>
+</html>
+
+INSERT DETAILS(data.php)
+<?php
+include_once('db.php');
+$userid=$_POST['userid'];
+$password=$_POST['password'];
+echo $userid. $password;
+$ans=mysqli_query($conn,"INSERT INTO user (userid,password) VALUES ('$userid','$password')");
+	echo $ans;
+	if($ans)
+    echo"successfully inserted";
+    else
+    echo "failed".mysqli_error($conn);
+?>
+
+CONNECTIVITY (db.php)
+
+<?php
+$dbhost="localhost";
+$dbuser="root";
+$dbpass="";
+$db="login";
+$conn=mysqli_connect($dbhost, $dbuser, $dbpass, $db) or die ("connect failed: %s\n".$conn->error);
+$db=mysqli_select_db($conn,'login');
+?>
+
+AUTHENTICATE(index.html)
+
+<html>
+<body>
+<h2><center>LOGIN PAGE</center></p>
+<form action="login.php" method="POST">
+<p>User ID:<input type="text" name="userid"></p>
+<p>Password:<input type="password" name="password"></p>
+<input type="submit" value='login'>
+</form>
+</body>
+</html>
+
+VERIFIED IN DATABASE (login.php)
+
+<?php
+$dbhost="localhost";
+$dbuser="root";
+$dbpass="";
+$db="login";
+$userid=$_POST['userid'];
+$password=$_POST['password'];
+$conn=mysqli_connect($dbhost, $dbuser, $dbpass, $db) or die ("connect failed: %s\n".$conn->error);
+$query="SELECT * from user where userid='$userid' and password='$password'";
+$result=mysqli_query($conn,$query);
+if(mysqli_num_rows($result)==1)
+{
+session_start();
+$_SESSION['user']=$userid;
+header('location:home.php');
+}
+else
+{
+	echo "Wrong usernme or password".mysqli_error($conn);
+}
+?>
+
+VERIFIED (home.php)
+
+<html>
+<body>
+<?php
+session_start();
+if(!$_SESSION['user'])
+{
+//header('location:login.php');
+echo "welcome:";
+}
+?>
+<h1>THE PAGE IS AUTHENTICATED</h1>
+</body>
+</html>
+
+IMAGE UPLOAD(image.html)
+
+<html>
+<body>
+<form action="imageupload.php" method="post" enctype="multipart/form-data" target="_blank">
+ <label for="Image Upload">Image Upload:<br><input type="file" name="file" >
+ <input type="submit" value="submit">
+ </form>
+ </body>
+ </html>
+ 
+ IMAGE UPLOAD(imageupload.php)
+ 
+ <?php
+$filename=$_FILES['file']['name'];
+$filetype=$_FILES['file']['type'];
+if($filetype=='image/jpeg' or $filetype=='image/png' or $filetype=='image/gif')
+{
+if(move_uploaded_file($_FILES['file']['tmp_name'],'images/'.$filename))
+	echo "Image Stored Successfully <a href='view.php'> View Image </a>";
+$filepath="dir_name`/".$filename;
+}
+?>
+
+DISPLAY IMAGE(view.php)
+
+<?php
+echo "<img src='images\'".$filename." rel=''style='width:200px;height:200px;'>";
+?>
+
+MYSQL CODE
+
+CREATE DATABASE login;
+
+CREATE TABLE user(name varchar(200), password varchar(200));
