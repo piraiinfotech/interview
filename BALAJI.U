@@ -1,0 +1,72 @@
+Fxml code
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="balafx.BalagetdetController">
+    <stylesheets>
+        <URL value="@balagetdet.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="93.0" fitWidth="335.0" layoutX="148.0" layoutY="154.0" opacity="0.43" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@im/pirai.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="37.0" layoutY="51.0" text="First Name :" textAlignment="CENTER" textFill="#f20808">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="334.0" layoutY="51.0" text="Last Name :" textAlignment="CENTER" textFill="#f20808">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="113.0" text="Mobile No:" textAlignment="CENTER" textFill="#f20808">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="265.0" text="Address :" textAlignment="CENTER" textFill="#f20808">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="186.0" text="Country :" textAlignment="CENTER" textFill="#f20808">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="339.0" text="City :" textAlignment="CENTER" textFill="#f20808">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="334.0" layoutY="196.0" text="State :" textAlignment="CENTER" textFill="#f20808">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="firstname" layoutX="155.0" layoutY="51.0" prefHeight="30.0" prefWidth="161.0" />
+      <JFXTextField fx:id="mobileno" layoutX="153.0" layoutY="110.0" prefHeight="30.0" prefWidth="161.0" />
+      <JFXTextField fx:id="country" layoutX="153.0" layoutY="185.0" prefHeight="30.0" prefWidth="161.0" />
+      <JFXTextField fx:id="city" layoutX="138.0" layoutY="335.0" prefHeight="30.0" prefWidth="161.0" />
+      <JFXTextField fx:id="state" layoutX="405.0" layoutY="192.0" prefHeight="30.0" prefWidth="188.0" />
+      <JFXTextField fx:id="lastname" layoutX="452.0" layoutY="58.0" prefHeight="30.0" prefWidth="141.0" />
+      <JFXTextArea fx:id="address" layoutX="135.0" layoutY="241.0" prefHeight="72.0" prefWidth="446.0" />
+      <JFXButton fx:id="submit" layoutX="418.0" layoutY="353.0" onAction="#handlesubmitAction" style="-fx-background-color: #00ff00;" text="Submit" />
+   </children>
+</AnchorPane>
+
