@@ -1,0 +1,7 @@
+Python version used: 
+python 3.7
+
+Requirements:
+pip3 install selenium
+
+Place the webdriver (geckodriver.exe) for firefox browser at location "C:/geckodriver.exe"
